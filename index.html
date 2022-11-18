@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"> <!--Instalamos boostrap icons-->
+    <link rel="stylesheet" href="./estilo.css">
+   
+    <title>Layout-Modo-oscuro</title>
+</head>
+<body>
+
+    <!--Arrancaremos por mobile FIRST-->
+  
+    <header class="header">
+        <div class="header-left">
+            <img class="logo" src="./img/logo.png" alt="Logo del panel"> <!--Logo para panel en modo claro-->
+            <img class="logo-dark" src="./img/logo-dark.png" alt="Logo del panel"> <!--Logo para panel en modo oscuro-->
+        </div>
+        <div class="header-right">
+            <div class="color-mode">
+                <i class="bi bi-moon-fill moon"></i> <!--Luna para pasar a modo oscuro-->
+                <i class="bi bi-sun sun"></i> <!--Sol para pasar al modo claro nuevamente-->
+            </div>
+        </div>
+    </header>
+    <hr>
+    <main>
+        <div class="main-grid">
+            <a href="#" class="grid-item">
+                <i class="bi bi-inboxes"></i>
+                <p>Mis pedidos</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-cloud-upload"></i>
+                <p>Agregar un producto</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-archive"></i>
+                <p>Mis productos</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-ui-checks"></i>
+                <p>Categorías</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-ticket-perforated"></i>
+                <p>Cupones</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-credit-card-2-back"></i>
+                <p>Métodos de pago</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-truck"></i>
+                <p>Métodos de envío</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-images"></i>
+                <p>Carrusel de imágenes</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-gear"></i>
+                <p>Configuración</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-palette"></i>
+                <p>Personalizar</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-people"></i>
+                <p>Gestión de empleados</p>
+            </a>
+            <a href="#" class="grid-item">
+                <i class="bi bi-emoji-heart-eyes"></i>
+                <p>Ver mi sitio</p>
+            </a>
+        </div>
+    </main>
+
+
+
+    <script src="script.js"></script>
+   
+</body>
+</html>

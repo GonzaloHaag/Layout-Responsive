@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); /*Importo la tipografia*/
+
+:root {  /*Creo las variables css que voy a utilizar*/
+    --clr-main: #fee801;
+    --clr-dark: #27292b;
+    --clr-light: #f5f5f5;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    --box-shadow-expand: 0 0 15px rgba(0, 0, 0, .3);
+    font-family: 'Poppins', sans-serif;
+}
+.body{
+    background-color: var(--clr-light); /*El body tendra background blanco*/
+    color: var(--clr-dark); /*El color de todas las letras sera negro*/
+    margin:0;
+    padding:0;  /*Todo esto es reseteo*/
+    box-sizing: border-box;
+    min-height: 100vh; /*Para poder trabajar en todo el alto y que no me quede todo arriba*/
+
+    /*Para que el cambio a fondo negro o blanco no sea tan brusco:*/
+    transition: background-color 2s, color 2s;
+}
+/*COMENZAMOS A REALIZAR LOS ESTILOS PARA EL CAMBIO A MODO OSCURO*/
+
+body.dark-mode{ /*Si al hacer click, body tiene la clase dark mode, haceme lo siguiente*/
+    background-color: var(--clr-dark); /*Al hacer click se ponga color negro*/
+    color:var(--clr-light); /*y todo color blanco*/
+
+}
+
+
+
+h1,h2,h3,h4,h5,h6,p,a{
+    margin:0;
+}
+a{
+    color: var(--clr-dark);
+    text-decoration: none;
+}
+body.dark-mode a{
+    color:var(--clr-light); /*Porque quiero que cuando el body este en modo oscuro, los a esten en blanco*/
+}
+.logo-dark{
+    display: none;
+}
+body.dark-mode .logo{
+    display: none; /*No quiero el logo negro en modo oscuro*/
+}
+body.dark-mode .logo-dark{
+    display: block;
+    max-width: 2em; /*Ahora aparecera el logo blanco, porque estaremos en modo oscuro*/
+}
+.sun{
+    display: none;
+}
+body.dark-mode .sun{
+    display: block; /*En el modo oscuro quiero que aparezca el sol*/
+    cursor: pointer;
+}
+.moon{
+    cursor: pointer;
+}
+body.dark-mode .moon{
+    display: none; /*Escondo la luna en el modo oscuro*/
+}
+.logo{
+    max-width: 2em;
+}
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap:10rem;
+}
+main{
+    padding:2rem; /*Esto hace que los grid items parezca que tengan un width, y no estan tan pegado a los bordes-->MUY INTERESANTE*/
+}
+.main-grid{
+    display: flex;
+    flex-direction: column; /*Para acomodar los items*/
+    gap:1rem; /*Para separarlos entre si*/
+}
+.grid-item{
+    display: flex;
+    box-shadow: var(--box-shadow);
+    align-items: center; /*Para centrar el texto  dentro de la carta*/
+    gap:1rem; /*Separa el icono del texto*/
+    padding:0.75rem 1rem;
+    border-radius: 0.75rem;
+    transition: 
+    background-color 0.2s, /*Para que cambie a amarillo en 2s*/
+    transform 0.2s;
+    color:0.2s; /*Para que el cambio de color a negro en el hover no sea tan brusco*/
+   
+}
+.grid-item p {
+    font-weight: 500;
+    line-height: 1.2;
+}
+.grid-item:hover{
+    background-color: var(--clr-main);
+    transform: scale(1.05); /*Para que se agrande un poquito al pasarle mouse*/
+
+}
+
+/*En el dark mode nececitamos un hover que muestre el icono y el parrafo en negro */
+
+body.dark-mode .grid-item:hover{
+    color:var(--clr-dark);
+}
+
+
+/*Como estamos en mobile first, trabajamos con min width en la media query*/
+
+@media screen and (min-width:400px) { /*A partir de 400px hara lo siguiente*/
+    .main-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr; /*Estoy creando 2 columnas y me las separa*/
+        grid-auto-rows: 1fr; /*Para que las filas generadas automaticamente midan 1fr, y los items TENGAN LA MISMA ALTURA*/
+    }
+    .grid-item{
+        display: flex;
+        flex-direction: column; /*Para que el icono quede encima del texto*/
+        justify-content: center;
+        text-align: center;
+        gap:0; /*Para achicar el espaciado*/
+    }
+    .grid-item i{
+        font-size: 1.6rem; /*Para agrandar los iconos*/
+    }
+}
+
+@media screen and (min-width:600px) { /*Ahora que se separen en 3 columnas*/
+    .main-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 1fr;
+    }
+    .grid-item{
+        padding-block:1.5rem;
+    }
+    .grid-item i{
+        font-size: 2rem; /*Agrandamos el icono un poco mas*/
+    }
+
+}
+@media screen and (min-width:800px) {
+    .main-grid{
+      
+        grid-template-columns: 1fr 1fr 1fr 1fr; /*Ahora que pase a ser de 4 columnas*/
+    }
+}
+
+@media screen and (min-width:1000px) { /*A partir de aca sera la version desktop*/
+    .main-grid{
+        display: grid;
+        grid-template-columns: repeat(5,1fr); /*5 columnas de 1fr*/
+       
+    }
+    .grid-item i{
+        font-size: 3rem;
+    }
+    .grid-item:nth-child(1){ /*Estoy agarrando el primer grid-item(mis pedidos)*/
+
+        grid-row: 1 / 3; /*Para que ocupe de la linea 1 hasta la 3, en filas. En inspeccionar hacerle click a grid y muestra las lineas*/
+    }
+    .grid-item:nth-child(2){
+        grid-row:1 / 3; /*Hago lo mismo con el segundo grid item, que seria agregar un producto*/
+    }
+    .grid-item:nth-child(3){
+        grid-column: 3 / 5; /*Es lo mismo que las filas, le digo que ocupe de la columna 3 a la 5, los numeros me guio por tocar display grid en la consola*/
+    }
+
+}
